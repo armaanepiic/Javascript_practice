@@ -1,3 +1,4 @@
-console.log("I am first line");
-console.log("I am second line");
-document.write("JS file is connected");
+var x;
+x = prompt("Enter Your Name");
+console.log(x);
+document.write(x);
