@@ -1,39 +1,23 @@
+// Operator
 /*
-var a;
-let b;
-a = 45;
-b = "Arman";
-console.log(a);
-console.log(b);
-*/
-/*
-var a;
-let b;
-a = 45;
-console.log(a)
-a = 35.34;
-console.log(a);
-a = "Arman";
-console.log(a);
-*/
-/*
-var a = 20;
-var b = a;
-console.log(a);
-console.log(b);
-a = 30;
-console.log(a);
-console.log(b);
-*/
-/*
-var a = 20;
-var b = 10;
-var c = a + b;
+var a = 5;
+var b = 7;
+var c, d;
+c = a++;
+d = ++b;
 console.log(c);
+console.log(a);
+console.log(d);
 */
-/*
-// variables are case sensitive
-var $a;
-$a = 30;
-console.log($a);
-*/
+var line1 = "Hello";
+var line2 = "world";
+
+console.log(line1 + " " + line2); //Hello world
+
+console.log(line1 + 10 + 30); //Hello1030
+
+console.log(30 + 10 + line1); // 40Hello
+
+console.log("76" - "3"); // 73
+console.log("76" + "3"); // 763
+console.log("76" - "arman"); //NAN
