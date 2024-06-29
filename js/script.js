@@ -1,19 +1,32 @@
-let x = 5 + 5;
-let y = "5" + 5;
-let z = "Hello" + 5;
-let p = 5 + 5 + "11";
+let x = 5;
+let y = 5;
+let z = 10;
+document.getElementById('demo').innerHTML = (x == y) + "<br>" + (x == z);
 
-console.log(x); // 10
-console.log(typeof x);
-console.log(y); // 55
-console.log(typeof y);
-console.log(z); // hello5
-console.log(typeof z);
-console.log(p); // 1011
-console.log(typeof p);
+const cars = ["BMW", "AUDI", "FERRARI", "LAMBORGHINI", "BUGHATI"];
+let element;
+for (let index = 0; index < cars.length; index++) {
+    element = cars[index];
+    document.getElementById('demo').innerHTML = element;
+    console.log(element);
+}
+
+// let x = 5 + 5;
+// let y = "5" + 5;
+// let z = "Hello" + 5;
+// let p = 5 + 5 + "11";
+
+// console.log(x); // 10
+// console.log(typeof x);
+// console.log(y); // 55
+// console.log(typeof y);
+// console.log(z); // hello5
+// console.log(typeof z);
+// console.log(p); // 1011
+// console.log(typeof p);
 
 
-console.log(5 & 1);
+// console.log(5 & 1);
 
 
 
