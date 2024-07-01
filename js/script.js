@@ -1,3 +1,55 @@
+
+// constructor function of an object
+
+function Person(first, last, age, eye) {
+    this.firstName = first;
+    this.lastName = last;
+    this.age = age;
+    this.eye = eye;
+    this.nationality = "English";
+    this.fullname = function () {
+        return this.firstName + " " + this.lastName;
+    }
+}
+const myFather = new Person("John", "Doe", 50, "Blue");
+myFather.blood_group = "A+";
+let text = "";
+for (let [x, y] of Object.entries(myFather)) {
+    text += x + " : " + y + "<br>";
+};
+document.getElementById('demo').innerHTML = text;
+// let myString = JSON.stringify(myFather);
+// document.getElementById('demo').innerHTML = myString;
+
+/*
+let text = "";
+for (let x in myFather) {
+    text += myFather[x] + " ";
+};
+document.getElementById('demo').innerHTML = text;
+
+
+const myArray = Object.values(myFather);
+document.getElementById('demo').innerHTML = myArray;
+
+
+
+let text = "";
+for (let [x, y] of Object.entries(myFather)) {
+    text += x + " : " + y + "<br>"
+}
+document.getElementById('demo').innerHTML = text;
+
+*/
+
+// let myString = JSON.stringify(myFather);
+// document.getElementById('demo').innerHTML = myString;
+
+
+
+
+
+/*
 // displaying the property of an object
 const person = {
     firstName: "Arman",
@@ -56,7 +108,7 @@ const fruits = {
 let myString = JSON.stringify(fruits);
 document.getElementById('demo').innerHTML = myString;
 
-
+*/
 // const person = {
 //     firstName: "Arman",
 //     lastName: "Hossain",
