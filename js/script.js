@@ -1,10 +1,56 @@
 
-function myFunc(a, b) {
-    console.log("hello");
-    return a * b;
-}
-let x = myFunc(4, 2);
-console.log(x);
+const person = {
+    firstName: "Arman",
+    lastName: "Hossain",
+    age: 26,
+    eyeColor: "Brown",
+    fullName: function () {
+        return this.firstName + " " + this.lastName;
+    }
+};
+document.getElementById('demo').innerHTML = person.firstName;
+// document.getElementById('demo').innerHTML = person; // [object Object]
+console.log(person);
+console.log(person.age);
+console.log(person.fullName().toUpperCase());
+delete person.age;
+console.log(person.age);
+
+
+const car = new Object();
+car.carName = "ferrari";
+car.color = "Red";
+car. model = 500;
+document.getElementById('cars').innerHTML = car.carName;
+// document.getElementById('cars').innerHTML = car["carName"];
+console.log(car.model);
+
+// nested object
+const myObj = {
+    firstName: "Arman",
+    age: 26,
+    myCars : {
+        car1: "Ford",
+        car2: "Ferrari",
+        car3: "Lamborghini",
+    },
+    school: "CCPC",
+    University: "IIUC"
+};
+console.log(myObj.firstName);
+console.log(myObj.myCars.car1);
+console.log(myObj.myCars.car2);
+console.log(myObj.myCars.car3);
+console.log(myObj.school);
+console.log(myObj.University);
+
+
+// function myFunc(a, b) {
+//     console.log("hello");
+//     return a * b;
+// }
+// let x = myFunc(4, 2);
+// console.log(x);
 
 
 
