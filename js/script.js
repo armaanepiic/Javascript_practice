@@ -1,15 +1,42 @@
-let x = 5;
-let y = 5;
-let z = 10;
-document.getElementById('demo').innerHTML = (x == y) + "<br>" + (x == z);
 
-const cars = ["BMW", "AUDI", "FERRARI", "LAMBORGHINI", "BUGHATI"];
-let element;
-for (let index = 0; index < cars.length; index++) {
-    element = cars[index];
-    document.getElementById('demo').innerHTML = element;
-    console.log(element);
+function myFunc(a, b) {
+    console.log("hello");
+    return a * b;
 }
+let x = myFunc(4, 2);
+console.log(x);
+
+
+
+
+
+
+// const person = { firstName: "Arman", age: 26, eyecolor: "brown" };
+// document.getElementById('demo').innerHTML = person.eyecolor;
+// console.log(typeof person.age);
+
+// function sleep(person, time) {
+//     console.log(person + " is sleeping from " + time);
+// }
+// sleep("Arman", "10 PM");
+// sleep("Nusrat", "11 PM");
+// sleep("Dolli", "12 PM");
+
+
+
+
+// let x = 5;
+// let y = 5;
+// let z = 10;
+// document.getElementById('demo').innerHTML = (x == y) + "<br>" + (x == z);
+
+// const cars = ["BMW", "AUDI", "FERRARI", "LAMBORGHINI", "BUGHATI"];
+// let element;
+// for (let index = 0; index < cars.length; index++) {
+//     element = cars[index];
+//     document.getElementById('demo').innerHTML = element;
+//     console.log(element);
+// }
 
 // let x = 5 + 5;
 // let y = "5" + 5;
