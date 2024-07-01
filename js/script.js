@@ -1,4 +1,19 @@
 
+
+function displayDate() {
+    document.getElementById('demo').innerHTML = Date();
+    alert("test");
+}
+
+
+
+
+
+
+
+
+
+/*
 // constructor function of an object
 
 function Person(first, last, age, eye) {
@@ -18,6 +33,8 @@ for (let [x, y] of Object.entries(myFather)) {
     text += x + " : " + y + "<br>";
 };
 document.getElementById('demo').innerHTML = text;
+
+*/
 // let myString = JSON.stringify(myFather);
 // document.getElementById('demo').innerHTML = myString;
 
