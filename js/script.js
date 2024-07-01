@@ -1,48 +1,106 @@
-
+// displaying the property of an object
 const person = {
     firstName: "Arman",
-    lastName: "Hossain",
     age: 26,
-    eyeColor: "Brown",
-    fullName: function () {
-        return this.firstName + " " + this.lastName;
-    }
+    city: "Chattogram"
 };
-document.getElementById('demo').innerHTML = person.firstName;
-// document.getElementById('demo').innerHTML = person; // [object Object]
-console.log(person);
-console.log(person.age);
-console.log(person.fullName().toUpperCase());
-delete person.age;
-console.log(person.age);
+document.getElementById('demo').innerHTML = person; // [object Object]
+
+// displaying the properties of an object as a string
+
+document.getElementById('demo').innerHTML = person.firstName + " , " + person.age + " , " + person.city;
+
+// displaying the properties of an object in a loop
 
 
-const car = new Object();
-car.carName = "ferrari";
-car.color = "Red";
-car. model = 500;
-document.getElementById('cars').innerHTML = car.carName;
-// document.getElementById('cars').innerHTML = car["carName"];
-console.log(car.model);
 
-// nested object
-const myObj = {
-    firstName: "Arman",
-    age: 26,
-    myCars : {
-        car1: "Ford",
-        car2: "Ferrari",
-        car3: "Lamborghini",
-    },
-    school: "CCPC",
-    University: "IIUC"
+let text = "";
+for (let x in person) {
+    text += person[x] + " ";
 };
-console.log(myObj.firstName);
-console.log(myObj.myCars.car1);
-console.log(myObj.myCars.car2);
-console.log(myObj.myCars.car3);
-console.log(myObj.school);
-console.log(myObj.University);
+document.getElementById('demo').innerHTML = text;
+
+
+
+// displaying the properties of an object Using
+// ------- Object.values()
+
+const myArray = Object.values(person);
+document.getElementById('demo').innerHTML = myArray;
+
+// displaying the properties of an object Using
+// ------- Object.entries()
+
+
+const fruits = {
+    Bananas: 100,
+    Oranges: 200,
+    Mangoes: 300,
+    Apples: 400
+};
+let text = "";
+for (let [fruit, value] of Object.entries(fruits)) {
+    text += fruit + ": " + value + "<br>";
+}
+document.getElementById('demo').innerHTML = text;
+
+
+// Using JSON.stringify()
+
+const fruits = {
+    Bananas: 100,
+    Oranges: 200,
+    Mangoes: 300,
+    Apples: 400
+};
+let myString = JSON.stringify(fruits);
+document.getElementById('demo').innerHTML = myString;
+
+
+// const person = {
+//     firstName: "Arman",
+//     lastName: "Hossain",
+//     age: 26,
+//     eyeColor: "Brown",
+//     fullName: function () {
+//         return this.firstName + " " + this.lastName;
+//     }
+// };
+// document.getElementById('demo').innerHTML = person.firstName;
+// // document.getElementById('demo').innerHTML = person; // [object Object]
+// console.log(person);
+// console.log(person.age);
+// console.log(person.fullName().toUpperCase());
+// delete person.age;
+// console.log(person.age);
+
+
+// const car = new Object();
+// car.carName = "ferrari";
+// car.color = "Red";
+// car. model = 500;
+// document.getElementById('cars').innerHTML = car.carName;
+// // document.getElementById('cars').innerHTML = car["carName"];
+// console.log(car.model);
+
+// // nested object
+// const myObj = {
+//     firstName: "Arman",
+//     age: 26,
+//     myCars : {
+//         car1: "Ford",
+//         car2: "Ferrari",
+//         car3: "Lamborghini",
+//     },
+//     school: "CCPC",
+//     University: "IIUC"
+// };
+// console.log(myObj.firstName);
+// console.log(myObj.myCars.car1);
+// console.log(myObj.myCars.car2);
+// console.log(myObj.myCars.car3);
+// console.log(myObj.school);
+// console.log(myObj.University);
 
 
 // function myFunc(a, b) {
