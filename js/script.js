@@ -1,11 +1,24 @@
+let text = "Bangladesh";
+console.log(text.length);
+let text1 = "We are the so-called \r \"Vikings\" from the north";
+console.log(text1.length);
+
+document.getElementById('demo').innerHTML = text1;
 
 
+
+  
+
+
+
+
+
+/*
 function displayDate() {
     document.getElementById('demo').innerHTML = Date();
     alert("test");
 }
-
-
+*/
 
 
 
