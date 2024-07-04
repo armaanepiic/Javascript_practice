@@ -1,36 +1,67 @@
+// Numbers
 
-// string templates
-let text = `It's my life.`;
-console.log(text);
+let x = 0.2, y = 0.1;
+console.log(x + y);
 
-//interpolation
-// Automatic replacing of variables with real values is called string interpolation.
-let firstName = "Arman", lastName = "Hossain";
-let text = `Welcome ${firstName} ${lastName}`;
-console.log(text);
-
-let country = "Germany";
-let a = 17, b = 1;
-let sentence = `I love ${country} and it's population is ${a+b} crore`;
-console.log(sentence);
+let x = (0.2 * 10 + 0.1 * 10) / 10;
+console.log(x);
 
 
-let price = 10;
-let vat = 0.25;
-let total = `Total: ${price * (1 + vat)}`;
-console.log(total);
+let x = 10, y = 20;
+let z = "Sum = " + x + y;
+console.log(z);
+let p = x + y + " is the Sum";
+console.log(p);
 
 
-let header = "Template Strings";
-let tags = ["template strings", "javascript", "es6"];
+let x = "100", y = "10";
+let z = x * y;
+console.log(z); // 11000
+let p = x / y;
+console.log(p); // 10
 
-let html = `<h2>${header}</h2><ul>`;
-for (const x of tags) {
-    html += `<li>${x}</li>`;
+
+// Nan
+let a = "250";
+console.log("\"250\"");
+console.log(isNaN(a));
+let b = 250;
+console.log(b);
+console.log(isNaN(b));
+let c = "a250";
+console.log(c);
+console.log(isNaN(c));
+let d = "1.25e-5";
+console.log(d);
+console.log(isNaN(d));
+
+
+console.log(typeof (NaN)); // Number
+
+
+let myNumber = 2;
+let txt = "";
+while (myNumber != Infinity) {
+    myNumber *= myNumber;
+    txt += myNumber + "<br>";
 }
-html += "</ul>";
-document.getElementById('demo').innerHTML = html;
+document.getElementById('demo').innerHTML = txt;
 
+console.log(2 / 0); // infinity
+console.log(typeof (Infinity));
+
+
+let x = 0xFF;
+console.log(x);
+console.log(x.toString(10)); // "255" string
+
+
+let x = 123456789012345678901234567890n;
+console.log(typeof (x));
+let y = BigInt("123456789012345678901234567890");
+console.log(typeof (y));
+
+console.log(Number.MIN_SAFE_INTEGER);
 
 
 
