@@ -1,67 +1,110 @@
-// Numbers
+// number methods
+// toString()
+// The toString() method returns a number as a string.
+/*
+let x = 123;
+console.log(typeof (x.toString())); // string
+let y = 100 + 23;
+console.log(typeof (y.toString())); // string
 
-let x = 0.2, y = 0.1;
-console.log(x + y);
 
-let x = (0.2 * 10 + 0.1 * 10) / 10;
+// toExponential()
+let x = 9.65659248657;
+let y = x.toExponential(4);
+console.log(y); // 9.6566e+0
+let a = 9.659;
+let z = a.toExponential();
+console.log(z); // 9.659e+0
+
+
+// toFixed()
+// toFixed() returns a string, with the number written with a specified number of decimals:
+let x = 9.656;
+console.log(x.toFixed(2)); // 9.66 it is a string
+console.log(x.toFixed(6));
+
+
+// toPrecision*(length)
+// toPrecision() returns a string, with a number written with a specified length:
+let x = 9.1256789;
+console.log(x.toPrecision(5));
+
+
+
+// Number methods
+document.getElementById('demo').innerHTML =
+    Number(true) + "<br>" +
+    Number(false) + "<br>" +
+    Number("10") + "<br>" +
+    Number("10.30") + "<br>" +
+    Number("10,30") + "<br>" +
+    Number("119 45") + "<br>" +
+    Number("ABC") + "<br>";
+
+
+let x = new Date("2024-06-24");
+document.getElementById('demo').innerHTML = Number(x);
+
+// parseInt(number)
+document.getElementById('demo').innerHTML =
+    parseInt("-10") + "<br>" + // 10
+    parseInt("-10.33") + "<br>" + // 10
+    parseInt("10") + "<br>" + // 10
+    parseInt("10.33") + "<br>" + // 10
+    parseInt("10 6") + "<br>" + // 10
+    parseInt("102 years") + "<br>" + // 10
+    parseInt("years 10"); // Nan
+
+
+// parseFloat(number)
+document.getElementById('demo').innerHTML =
+    parseFloat("10.31");
+
+
+// Number.isInteger() Method
+let x = 10;
+document.getElementById('demo').innerHTML = Number.isInteger(x); // true
+
+
+let x = 10.44;
+document.getElementById('demo').innerHTML = Number.isInteger(x); // false
+
+
+// constructor
+let num = 134.5;
+let text = num.constructor;
+console.log(text);
+
+
+let x = Number.EPSILON;
 console.log(x);
+// 2.220446049250313e-16
+// The difference between 1 and the smallest floating point number greater than 1 is:
 
+// Number.isFinite(x)
+let x = 123;
+console.log(Number.isFinite(x)); // true
+let y = "124";
+console.log(Number.isFinite(y)); // false
+*/
 
-let x = 10, y = 20;
-let z = "Sum = " + x + y;
-console.log(z);
-let p = x + y + " is the Sum";
-console.log(p);
-
-
-let x = "100", y = "10";
-let z = x * y;
-console.log(z); // 11000
-let p = x / y;
-console.log(p); // 10
-
-
-// Nan
-let a = "250";
-console.log("\"250\"");
-console.log(isNaN(a));
-let b = 250;
-console.log(b);
-console.log(isNaN(b));
-let c = "a250";
-console.log(c);
-console.log(isNaN(c));
-let d = "1.25e-5";
-console.log(d);
-console.log(isNaN(d));
-
-
-console.log(typeof (NaN)); // Number
-
-
-let myNumber = 2;
-let txt = "";
-while (myNumber != Infinity) {
-    myNumber *= myNumber;
-    txt += myNumber + "<br>";
+Number.prototype.myMethod = function () {
+    return this.valueOf() / 2;
 }
-document.getElementById('demo').innerHTML = txt;
-
-console.log(2 / 0); // infinity
-console.log(typeof (Infinity));
+let x = 50;
+console.log(x.myMethod());
 
 
-let x = 0xFF;
-console.log(x);
-console.log(x.toString(10)); // "255" string
 
 
-let x = 123456789012345678901234567890n;
-console.log(typeof (x));
-let y = BigInt("123456789012345678901234567890");
-console.log(typeof (y));
 
-console.log(Number.MIN_SAFE_INTEGER);
+
+
+
+
+
+
+
 
 
 
