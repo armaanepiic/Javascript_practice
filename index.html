@@ -3,13 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Javascript</title>
+    <title>Color Flipper</title>
+    <link rel="stylesheet" href="output.css">
 </head>
 <body>
+    <div class="bg-sky-800 py-16 mx-16 my-6 shadow-lg shadow-sky-600">
+        <h3 class="text-4xl font-bold text-center pb-5">
+            <span class="">Color</span>
+            <span class="">Flipper</span>
+        </h3>
+        <div id="main" class="flex flex-row justify-center gap-x-32">
+            <div class="py-8 px-4 flex flex-col justify-center items-center gap-2 text-xl">
+                <button onclick="setColor('green')" id="green" class="shadow-md shadow-green-400 my-2 mx-2 w-32 bg-green-300 rounded-full px-2 py-1 focus:ring-2 focus:ring-slate-700">Green</button>
+                <button onclick="setColor('red')" id="red" class="shadow-md shadow-red-400 my-2 mx-2 w-32 bg-red-300 rounded-full px-2 py-1 focus:ring-2 focus:ring-slate-700">Red</button>
+                <button onclick="setColor('blue')" id="blue" class="shadow-md shadow-blue-400 my-2 mx-2 w-32 bg-blue-300 rounded-full px-2 py-1 focus:ring-2 focus:ring-slate-700">Blue</button>
+                <button onclick="randomColor()" id="random" class="shadow-md shadow-slate-400 my-2 mx-2 w-32 bg-orange-300 rounded-full px-2 py-1 focus:ring-2 focus:ring-slate-700">Random</button>
+            </div>
     
-    <!-- <button onclick="myFunction()">Try it</button> -->
-    <p id="demo"></p>
-
+            <div id="circle" class="shadow-inner shadow-slate-400 w-60 h-60 my-auto border-4  rounded-full ring-offset-red-700 ring-2"></div>
+        </div>
+    </div>
+    <hr>
+    
     <script src="js/script.js"></script>
 </body>
 </html>
