@@ -1,4 +1,4 @@
-
+/*
 // Basic array methods
 // Array.length()
 const fruits = ["Banana", "Orange", "Apple", "Mango"];
@@ -133,3 +133,5 @@ const myArr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const newArr = myArr.slice(3);
 const Arr = myArr.slice(1, 3); // index 1 theke 3 er age porjonto slice korbe
 document.getElementById('demo').innerHTML = myArr + "<br>" + newArr + "<br>" + Arr;
+
+*/
