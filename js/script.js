@@ -1,93 +1,36 @@
-// Array
+// Object
 
-let numbers = [];
-console.log(numbers.length);
-numbers.push(12);
-console.log(numbers.length);
-console.log(numbers);
+let arr = [1, 2, 3];
+console.log(arr);
+let student = {
+    firstName : "Arman",
+    age: 25,
+    country : "Bangladesh"
+}
+console.log(student["firstName"]);
+console.log(student.age);
+console.log(student["country"])
 
-let x = "Bangladesh";
-let y = x.split("");
-console.log(y.length);
-console.log(y); // ['B', 'a', 'n', 'g', 'l', 'a', 'd', 'e', 's', 'h']
-console.log(typeof y);
-let p = "Hello World";
-let q = p.split(" ");
-console.log(q);
-let a = y.toString();
-a = y.join("");
-console.log(a);
+student["Institution"] = "IIUC"
+console.log(student.Institution);
 
-let countries = ["UK", "USA", "Peru", "Pakistan"];
-let text = countries.toString();
-text = countries.join(", ");
-console.log(text);
+student.village = "Noakhali";
+console.log(student);
+console.log(student.village);
 
-let name = "Arman";
-let temp = name.split("");
-console.log(temp);
-let myName = temp.toString();
-myName = temp.join("");
-console.log(myName);
+delete student.village;
+console.log(student)
 
-let countries = ["UK", "USA", "Peru", "Pakistan"];
-let cars = ["BMW", "Ferrari", "Audi"];
-let myArray = countries.concat(cars);
-console.log(myArray);
-let myString = myArray.toString();
-myString = myArray.join("/");
-console.log(myString);
-
-let x = "Arman";
-let cars = ["BMW", "Ferrari", "Audi"];
-let y = x.split('');
-console.log(y);
+student = {}
+console.log(student)
 
 
-let x = "Arman";
-let cars = ["BMW", "Ferrari", "Audi"];
-let y = x.concat(cars);
-console.log(y);
+var arr = [10, 12, [1, 2, 3], 8, 9];
+console.log(arr);
+console.log(arr[2][1]);
 
-
-
-let countries = ["UK", "USA", "Peru", "Pakistan"];
-console.log(countries);
-countries.sort();
-console.log(countries);
-countries.reverse();
-console.log(countries);
-
-
-
-let countries = ["UK", "USA", "Peru", "Pakistan"];
-console.log(countries);
-console.log(countries[0]); // UK
-console.log(countries.length);
-countries[countries.length] = "Denmark";
-console.log(countries);
-countries.pop();
-console.log(countries);
-countries.push("Portugal", "Japan");
-console.log(countries);
-countries.shift();
-console.log(countries);
-countries.unshift("China");
-console.log(countries);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+var myarr = [10, 12, { prop1: "item-1", prop2: "item-2" }];
+console.log(myarr[2].prop2);
 
 
 
