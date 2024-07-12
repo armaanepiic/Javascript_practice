@@ -1,76 +1,41 @@
-// Data Types
-/*
-let x = 20 + 10 + "Arman";
-console.log(x);
+// string data types
 
-let x = "20" - "5";
-console.log(x);
-console.log(x / 0);
+// let x = "Hello \t world";
+// let x = "Helo 'world'";
+// let x = '"Hello" world';
+// let x = "Hello \"world\"";
+// let x = "Hello\nworld";
+let x = "Hello", y = " world";
+console.log(x + y);
+console.log((x+y).length);
 
-let x = 123 * 10 ** 5;
-console.log(x);
-
-let x = 123e5;
-console.log(x);
-let y = 123e-5;
+let x = "arman";
+let y = x.toUpperCase();
+console.log(y);
+let z = "NUSRAT";
+y = z.toLowerCase();
 console.log(y);
 
-let x = 10 + 20 + "Arman";
-console.log(x);
-
-let y = "The result is " + 10 + 20;
+let x = "    I love my country       ";
+let y = x.trim();
 console.log(y);
 
-console.log("20" % "4");
-
-let x = 25 / 0;
-console.log(x);
-let y = Infinity;
+let x = "Bangladesh";
+let y = x.slice(-5, -1);
 console.log(y);
 
-
-// toString()
-let x = 18.567;
-console.log(typeof x);
-let y = x.toString();
+let x = "Bangladesh";
+let y = x.substr(2, 3);
 console.log(y);
-console.log(typeof y);
 
-// 187 to its binary
-
-let x = 187;
-let y = x.toString(2);
+let x = "Bangladesh";
+let y = x.replace("ang", "la");
 console.log(y);
-console.log(typeof y);
 
-let x = 12.2589;
-let y = x.toPrecision(4);
-console.log(y);
-console.log(typeof y); // string
-
-let x = 187.54;
-console.log(x);
-let y = x.toString();
-console.log(y);
-console.log(typeof y);
-let z = parseFloat(y);
+let x = "abc";
+let y = "def";
+let z = x.concat(y, "21");
 console.log(z);
-console.log(typeof z);
-
-let x = "Arman";
-console.log(isNaN(x));
-let y = 123;
-console.log(isNaN(y));
-let p = "123"; // it considered as number
-console.log(isNaN(p));
-
-*/
-
-
-
-
-
-
 
 
 
