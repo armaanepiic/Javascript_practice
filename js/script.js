@@ -1,39 +1,29 @@
-// Object
 
-let arr = [1, 2, 3];
-console.log(arr);
-let student = {
-    firstName : "Arman",
+//primitive type
+// number, string, boolean
+// deals with value
+
+let a = 7;
+let b = a;
+a = 45;
+console.log(b);
+
+
+// reference types
+// array, object
+let numbers = [1, 2, 3];
+let newNumbers = numbers;
+console.log(newNumbers);
+numbers[1] = 800;
+console.log(newNumbers);
+
+let personal = {
+    firstName: "Arman",
     age: 25,
-    country : "Bangladesh"
+    country: "Bangladesh"
 }
-console.log(student["firstName"]);
-console.log(student.age);
-console.log(student["country"])
-
-student["Institution"] = "IIUC"
-console.log(student.Institution);
-
-student.village = "Noakhali";
-console.log(student);
-console.log(student.village);
-
-delete student.village;
-console.log(student)
-
-student = {}
-console.log(student)
-
-
-var arr = [10, 12, [1, 2, 3], 8, 9];
-console.log(arr);
-console.log(arr[2][1]);
-
-var myarr = [10, 12, { prop1: "item-1", prop2: "item-2" }];
-console.log(myarr[2].prop2);
-
-
-
-
-
-
+let x = personal;
+console.log(personal);
+console.log(x);
+personal.age++;
+console.log(x);
