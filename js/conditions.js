@@ -23,7 +23,7 @@ if (age >= 35) {
 }
 
 // calculate gpa
-let gpa = prompt();
+// let gpa = prompt();
 let result;
 if (gpa >= 80 && gpa <= 100) {
     result = "A+";
@@ -43,3 +43,59 @@ if (gpa >= 80 && gpa <= 100) {
     result = "Invalid input";
 }
 console.log(result);
+
+// switch statement
+
+let choice = prompt();
+let text;
+switch (choice) {
+    case "a": text = "Option 1 selected";
+        break;
+    case "b": text = "Option 2 selected";
+        break;
+    case "c": text = "Option 3 selected";
+        break;
+    default: text = "No option selected";
+}
+console.log(text);
+
+
+let a = prompt("Enter first number");
+let b = prompt("Enter second number");
+let option = prompt(`Select an option
+1 : Add
+2 : Subtract
+3 : Multiply
+4 : Divide`);
+var result = null;
+
+a = parseInt(a);
+b = parseInt(b);
+option = parseInt(option);
+
+let aCon = isNaN(a);
+let bCon = isNaN(b);
+let optionCon = isNaN(option);
+
+if (aCon || bCon || optionCon) {
+    console.log("invalid input");
+} else {
+    switch (option) {
+        case 1: result = a + b;
+            break;
+        case 2: result = a - b;
+            break;
+        case 3: result = a * b;
+            break;
+        case 4: result = a / b;
+            break;
+        default:
+            break;
+    }
+    if (result == null) {
+        console.log("No Result!");
+    }
+    else {
+        console.log("Result: " + result);
+    }
+}
