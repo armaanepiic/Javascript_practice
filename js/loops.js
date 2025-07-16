@@ -1,3 +1,19 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 // loops
 // while loop
 
@@ -63,3 +79,5 @@ for (var i = 1;i <= x; i++){
         series += " + ";
 }
 console.log(`${series} = ${sum}`);
+
+*/
