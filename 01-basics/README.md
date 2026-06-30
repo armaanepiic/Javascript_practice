@@ -423,6 +423,13 @@ console.log(a);
 console.log(b);
 ```
 
+Output
+
+```
+Hello
+World
+```
+
 ```js
 let user1 = { name: "Alice" };
 let user2 = user1;
@@ -432,9 +439,24 @@ user2.name = "Bob";
 console.log(user1.name);
 ```
 
+Output
+
+```
+Bob
+```
+
 ```js
 console.log(typeof null);
 console.log(typeof []);
 console.log(typeof {});
 console.log(typeof function(){});
+```
+
+Output
+
+```
+object
+object
+object
+function
 ```
