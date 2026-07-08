@@ -1,3 +1,200 @@
+# JavaScript Values
+
+Everything in JavaScript is built around values.
+
+A value is simply a piece of data that JavaScript can work with.
+
+For example:
+
+```
+10
+"Arman"
+true
+null
+```
+
+These are all values.
+
+Whenever you write JavaScript code, you're either:
+
+- Writing a value directly (Literal)
+- Storing a value inside a variable (Variable)
+
+```
+JavaScript Values
+│
+├── Literals (Fixed Values)
+│
+└── Variables (Variable Values)
+```
+
+## 1. Literals (Fixed Values)
+
+A Literal is a value that you write directly into your code. You don't need another variable or calculation to get it.
+
+Think of it as the actual value itself.
+
+Example
+
+```js
+100
+```
+
+`100` is a literal. `"Hello"` is also a literal. `true` is also a literal.
+
+### Types of Literals
+
+#### Number Literal
+
+```js
+console.log(100);  // 100
+```
+
+#### String Literal
+
+```js
+console.log("JavaScript");  // JavaScript
+```
+
+#### Boolean Literal
+
+```js
+let isLoggedIn = true;
+```
+
+#### Null Literal
+
+```js
+let user = null;
+```
+
+#### Undefined
+
+```js
+let value = undefined;
+```
+
+#### Object Literal
+
+```js
+{
+    name: "Arman",
+    age: 23
+}
+```
+
+#### Array Literal
+
+```js
+[10, 20, 30]
+```
+
+#### Function Literal
+
+```js
+function greet() {}
+```
+
+### Why are they called "Fixed Values"?
+
+Because they are written exactly as they are. JavaScript immediately knows the value without looking anywhere else.
+
+## 2. Variables (Variable Values)
+
+Variables are containers that store values.
+
+Example
+
+```js
+let age = 100;
+```
+
+Here `100` is the literal and `age` is the variable.
+
+### Why use Variables?
+
+Without variables
+
+```js
+console.log("Arman");
+console.log("Arman");
+console.log("Arman");
+```
+
+If you change your name, you must edit every line.
+
+With variables
+
+```js
+let name = "Arman";
+
+console.log(name);
+console.log(name);
+console.log(name);
+
+name = "Rahim"; // Everything updates automatically
+```
+
+### Variables are called "Variable Values"
+
+Because the value inside them can change.
+
+```js
+let score = 50;
+score = 80;
+score = 95;
+```
+
+The variable remains the same. Only its value changes.
+
+## Literal vs Variable
+
+```js
+// Literal
+console.log(100);
+
+// Variable
+let age = 100;
+console.log(age);
+```
+
+Both output `100`, but with a variable, JavaScript first looks inside `age`.
+
+## Interview Question
+
+```js
+let x = 10;
+```
+
+- Variable → `x`
+- Literal → `10`
+
+```js
+const country = "Bangladesh";
+```
+
+- Variable → `country`
+- Literal → `"Bangladesh"`
+
+## Key Difference
+
+| Literals | Variables |
+|---|---|
+| Actual values written directly in code | Named containers that store values |
+| Fixed at the place they are written | Can hold different values over time (except `const`) |
+| Examples: `10`, `"Hello"`, `true`, `[1,2]`, `{}` | Examples: `age`, `name`, `isLoggedIn` |
+
+## Quick Revision
+
+- A value is any piece of data JavaScript can work with.
+- A literal is a value written directly in the code (e.g., `42`, `"Hello"`, `true`).
+- A variable is a named container that stores a value.
+- Variables make code reusable and easier to maintain.
+- In `let age = 25;`, `age` is the variable and `25` is the literal.
+- Numbers, strings, booleans, arrays, objects, null, and even function definitions can all be written as literals.
+
+---
+
 # JavaScript Data Types
 
 JavaScript data types are divided into 2 categories:
