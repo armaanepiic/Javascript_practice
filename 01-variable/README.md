@@ -373,6 +373,112 @@ z = 30; // ❌ TypeError
 
 ---
 
+# JavaScript Hoisting
+
+## What is Hoisting?
+
+Before JavaScript runs your code line by line, it first scans the entire file and allocates memory for all variables and functions. This phase is called the **Memory Creation Phase**.
+
+This behavior — where declarations are processed before execution — is called **Hoisting**.
+
+> Hoisting does NOT move code to the top. It only allocates memory for declarations before execution begins.
+
+## Common Misconception
+
+Many people say:
+
+> "let and const are not hoisted."
+
+❌ This is wrong.
+
+The correct statement is:
+
+> **var, let, and const — all three are hoisted.**
+
+The difference is in how they are initialized in memory.
+
+## Memory Creation Phase
+
+Given this code:
+
+```js
+console.log(a);
+console.log(b);
+
+var a = 10;
+let b = 20;
+```
+
+Before any line executes, JavaScript scans and sets up memory like this:
+
+```
+a → undefined
+b → <uninitialized>
+```
+
+Both `a` and `b` get memory. But their initial state is different.
+
+## Execution Phase
+
+```js
+console.log(a); // undefined  ← memory has a value (undefined)
+console.log(b); // ❌ ReferenceError ← memory exists but no value yet
+```
+
+Notice the exact error for `b`:
+
+```
+ReferenceError: Cannot access 'b' before initialization
+```
+
+Not `b is not defined` — JavaScript **knows** `b` exists in memory. It just has no value yet. This itself is proof that `let` is hoisted.
+
+## var vs let vs const in Hoisting
+
+| | `var` | `let` | `const` |
+|---|---|---|---|
+| Memory allocated? | ✅ | ✅ | ✅ |
+| Initialized immediately? | ✅ `undefined` | ❌ | ❌ |
+| Accessible before declaration? | ✅ (returns `undefined`) | ❌ TDZ error | ❌ TDZ error |
+
+## Temporal Dead Zone (TDZ)
+
+The time between when `let` / `const` is hoisted (memory allocated) and when its declaration line is actually executed is called the **Temporal Dead Zone**.
+
+During TDZ, accessing the variable throws a `ReferenceError`.
+
+```js
+console.log(name); // ❌ TDZ — ReferenceError
+let name = "Arman";
+console.log(name); // ✅ "Arman" — TDZ is over
+```
+
+## Real-Life Analogy
+
+Think of a new employee joining a company.
+
+**`var`** — HR sets up the desk before they arrive and puts a placeholder name tag on it. You can visit the desk, but the employee isn't there yet.
+
+```
+Desk → "Unnamed Employee" (undefined)
+```
+
+**`let` / `const`** — HR reserves the desk but puts a "Reserved — Do Not Enter" sign on it. If you try to go there before the employee officially joins, you get stopped.
+
+```
+Desk → Reserved (Temporal Dead Zone)
+```
+
+## Interview Tip
+
+If asked *"Is `let` hoisted?"* — just saying "No" or "Yes" is incomplete.
+
+The correct answer:
+
+> `let` is hoisted — memory is allocated during the Memory Creation Phase. However, unlike `var`, it is not initialized with `undefined`. It stays in the **Temporal Dead Zone** until its declaration line is executed, which is why accessing it early throws a `ReferenceError`.
+
+---
+
 # JavaScript Identifiers
 
 ## Definition
