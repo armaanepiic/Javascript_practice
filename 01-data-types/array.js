@@ -415,6 +415,84 @@ function sumAllNumbers(first, ...restNumbers) {
 }
 console.log(sumAllNumbers(1, 2, 3, 4)); // 10
 
+
+/* ------------------ ARRAYS CONTAINING ARRAYS & OBJECTS ------------------ */
+// An array item is NOT limited to strings/numbers — it can also be
+// another array, an object, or even a mix of both together.
+// This is how real-world data (like API responses) is usually structured.
+
+// 52. Array inside an array (nested array)
+// Accessing a nested array requires TWO sets of brackets: the first
+// index picks the inner array, the second index picks the item inside it.
+let classRooms = [
+  ["Arman", "Karim"],       // Room 1 students
+  ["Salma", "Nasrin"],      // Room 2 students
+  ["Rafiq", "Hossain"]      // Room 3 students
+];
+
+console.log(classRooms[0]); // ["Arman", "Karim"] — the whole inner array
+console.log(classRooms[0][1]); // "Karim" — first bracket picks the room, second picks the student
+console.log(classRooms[2][0]); // "Rafiq"
+
+// Looping through a nested array needs a loop inside a loop
+for (let room of classRooms) {
+  for (let studentName of room) {
+    console.log(studentName); // logs every student, room by room
+  }
+}
+
+// 53. Object inside an array (array of objects)
+// Very common pattern — e.g. a list of users, products, or records.
+// Each item is accessed by index first, then its properties by key.
+let userList = [
+  { name: "Arman", age: 29 },
+  { name: "Salma", age: 25 },
+  { name: "Karim", age: 32 }
+];
+
+console.log(userList[0]); // { name: "Arman", age: 29 } — the whole object
+console.log(userList[0].name); // "Arman" — index picks the object, dot picks the property
+console.log(userList[1]["age"]); // 25 — bracket notation also works for the property
+
+// Looping through an array of objects
+for (let user of userList) {
+  console.log(user.name + " is " + user.age + " years old");
+}
+
+// Array methods (map/filter/find) work perfectly on arrays of objects too
+let userNamesOnly = userList.map(user => user.name);
+console.log(userNamesOnly); // ["Arman", "Salma", "Karim"]
+
+let adultsOnly = userList.filter(user => user.age >= 30);
+console.log(adultsOnly); // [{ name: "Karim", age: 32 }]
+
+// 54. Deeply nested structure (array + object + array, all mixed)
+// Real data is often layered like this — an array of objects, where
+// one of the object's properties is itself an array.
+let companyData = [
+  {
+    department: "Engineering",
+    employees: ["Arman", "Rafiq"]
+  },
+  {
+    department: "Marketing",
+    employees: ["Salma", "Nasrin", "Hossain"]
+  }
+];
+
+console.log(companyData[0].department); // "Engineering"
+console.log(companyData[0].employees); // ["Arman", "Rafiq"] — array inside the object
+console.log(companyData[0].employees[1]); // "Rafiq" — specific employee inside that array
+console.log(companyData[1].employees.length); // 3
+
+// Looping through this mixed structure
+for (let dept of companyData) {
+  console.log(dept.department + ":");
+  for (let employeeName of dept.employees) {
+    console.log("  - " + employeeName);
+  }
+}
+
 // let countries = ["UK", "Poland", "Canada"];
 // countries[countries.length] = "USA";
 // countries.push("China");
