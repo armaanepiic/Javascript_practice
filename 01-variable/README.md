@@ -622,6 +622,13 @@ console.log(5 == "5");   // true  → only checks value
 console.log(5 === "5");  // false → checks value AND type
 ```
 
+Same logic applies for `!=` and `!==`:
+ 
+```js
+console.log(5 != "5");   // false → values are equal, so "not equal" is false
+console.log(5 !== "5");  // true  → value is equal but type is different, so strictly not equal
+```
+
 Always prefer `===` over `==` to avoid unexpected bugs.
 
 ### 4. Logical Operators
