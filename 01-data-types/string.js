@@ -1,9 +1,3 @@
-/* ============================================================
-   JAVASCRIPT STRING METHODS — COMPLETE PRACTICE TEMPLATE
-   Each method: meaningful variable name + console.log output
-   ============================================================ */
-
-
 /* ------------------ BASIC STRING METHODS ------------------ */
 
 // 1. length
