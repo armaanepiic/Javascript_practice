@@ -12,6 +12,8 @@ A companion guide to [`object.js`](./object.js). Objects are collections of key�
 6. [Copying & Combining Objects](#copying--combining-objects)
 7. [Advanced Property Features](#advanced-property-features)
 8. [JSON Conversion](#json-conversion)
+9. [Math Object (Built-in)](#math-object-built-in)
+10. [Date Object (Built-in)](#date-object-built-in)
 
 ---
 
@@ -414,6 +416,170 @@ console.log(typeof parsedProduct); // "object"
 
 ---
 
+## Math Object (Built-in)
+
+`Math` is a **built-in object** — you never create it with `new`; you call its properties and methods directly on `Math` itself.
+
+### 34. Math Constants
+
+Fixed mathematical values stored as properties — no parentheses needed:
+
+```js
+Math.PI; // 3.141592653589793
+Math.E;  // 2.718281828459045 — Euler's number
+```
+
+### 35. `Math.round()`
+
+Rounds to the **nearest** whole number — `.5` and above goes up, below `.5` goes down:
+
+```js
+Math.round(4.49); // 4
+Math.round(4.6);  // 5
+```
+
+### 36. `Math.ceil()`
+
+Always rounds **up** to the next whole number ("ceiling"), no matter how small the decimal part is:
+
+```js
+Math.ceil(1.1); // 2
+Math.ceil(1.9); // 2
+```
+
+### 37. `Math.floor()`
+
+Always rounds **down** to the previous whole number ("floor"), no matter how large the decimal part is:
+
+```js
+Math.floor(1.9); // 1
+```
+
+| Input | `round()` | `ceil()` | `floor()` |
+|---|---|---|---|
+| `4.49` | 4 | 5 | 4 |
+| `4.6` | 5 | 5 | 4 |
+
+### 38. `Math.sqrt()`
+
+Returns the square root of a number:
+
+```js
+Math.sqrt(81); // 9
+```
+
+### 39. `Math.abs()`
+
+Returns the **absolute value** — the distance from zero, so negatives become positive:
+
+```js
+Math.abs(-1.5); // 1.5
+```
+
+### 40. `Math.pow()`
+
+Raises a base to a power: `Math.pow(base, exponent)`. The modern `**` operator does the same thing:
+
+```js
+Math.pow(2, 3); // 8
+2 ** 3;         // 8 — same result
+```
+
+### 41. `Math.min()` / `Math.max()`
+
+Return the smallest / largest of the numbers passed in. For an **array** of numbers, spread it first: `Math.min(...arr)`.
+
+```js
+Math.min(8, 6, 9, -7, 0); // -7
+Math.max(8, 6, 9, -7, 0); // 9
+```
+
+### 42. `Math.random()`
+
+Returns a random decimal from `0` (inclusive) up to `1` (exclusive):
+
+```js
+Math.random(); // e.g. 0.7231589...
+```
+
+### 43. Random Whole Number in a Range
+
+The classic combo: scale `Math.random()` up, then `Math.floor()` it. Formula for 1 to N inclusive: `Math.floor(Math.random() * N + 1)`.
+
+```js
+let randomDice = Math.floor(Math.random() * 6 + 1);      // 1 to 6
+let randomPercent = Math.floor(Math.random() * 100 + 1); // 1 to 100
+```
+
+---
+
+## Date Object (Built-in)
+
+Unlike `Math`, `Date` **is** created with the `new` keyword — each Date object represents one specific moment in time.
+
+### 44. Creating Dates
+
+`new Date()` with no arguments gives the current date and time. Passing a date string creates that specific moment instead:
+
+```js
+let today = new Date();
+console.log(typeof today); // "object"
+
+let birthday = new Date("01-13-2026 08:12:45");
+// Tue Jan 13 2026 08:12:45
+```
+
+### 45. `toString()`
+
+Converts a Date object into a human-readable string:
+
+```js
+today.toString();        // e.g. "Mon Jul 13 2026 ..."
+typeof today.toString(); // "string"
+```
+
+### 46. Getting Date Parts
+
+Each part of a date has its own getter method. Watch the two classic quirks:
+
+- `getMonth()` is **zero-based** — `0` = January, `11` = December
+- `getDay()` is the **weekday** (`0` = Sunday), not the day of the month — that's `getDate()`
+
+```js
+today.getFullYear(); // e.g. 2026
+today.getMonth();    // 0-11 (0 = January!)
+today.getDate();     // 1-31 — day of the MONTH
+today.getDay();      // 0-6 — day of the WEEK (0 = Sunday)
+```
+
+### 47. Getting Time Parts
+
+```js
+today.getHours();   // 0-23
+today.getMinutes(); // 0-59
+today.getSeconds(); // 0-59
+```
+
+### 48. `getTime()` — the Timestamp
+
+Returns the number of **milliseconds since Jan 1, 1970** (the "Unix epoch"). Useful for comparing dates or measuring elapsed time:
+
+```js
+today.getTime(); // e.g. 1783922400000
+```
+
+### 49. Setting Date Parts
+
+Every getter has a matching setter that **modifies** the date object. Remember `setMonth()` is zero-based too (`2` = March):
+
+```js
+birthday.setMonth(2); // month becomes March
+birthday.setDate(24); // day of month becomes 24
+console.log(birthday); // Tue Mar 24 2026 08:12:45
+```
+
+---
+
 ## Quick Reference
 
 | # | Concept | One-liner |
@@ -439,3 +605,13 @@ console.log(typeof parsedProduct); // "object"
 | 28–29 | Getters / setters | Property-like methods |
 | 30–31 | `?.` and `??` | Safe access + fallback |
 | 32–33 | JSON | Object ↔ string |
+| 34 | Math constants | `Math.PI`, `Math.E` |
+| 35–37 | Rounding | `round()` nearest / `ceil()` up / `floor()` down |
+| 38–40 | `sqrt` / `abs` / `pow` | Root, absolute value, power |
+| 41 | `Math.min()` / `max()` | Smallest / largest of the arguments |
+| 42–43 | `Math.random()` | Random 0–1; `floor(random() * N + 1)` for 1–N |
+| 44 | `new Date()` | Current moment, or from a date string |
+| 45 | `toString()` | Date → readable string |
+| 46–47 | Getters | Year, month (0-based!), date, day, hours… |
+| 48 | `getTime()` | Milliseconds since 1970 (timestamp) |
+| 49 | Setters | `setMonth()`, `setDate()` — modify the date |
