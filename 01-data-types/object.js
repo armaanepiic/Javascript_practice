@@ -291,22 +291,110 @@ let parsedProduct = JSON.parse(productJSON);
 console.log(parsedProduct); // { title: "Laptop", price: 55000 }
 console.log(typeof parsedProduct); // "object"
 
-// let student = {
-//   name: "arman",
-//   age: 29,
-//   greeting() {
-//     console.log("Hello");
-//   },
-// };
-// student.occupation = "student";
-// console.log(student.name);
-// console.log(student.age);
-// student.greeting();
-// console.log(student.occupation);
-// delete student.age;
-// console.log(student);
 
-// // empty object
-// let customer = {};
-// console.log(customer);
-// console.log(typeof customer);
+/* ------------------ MATH OBJECT (BUILT-IN) ------------------ */
+
+// Math is a BUILT-IN object — you never create it with "new";
+// you just call its properties and methods directly on Math itself.
+
+// 34. Math constants
+// Fixed mathematical values stored as properties (not methods —
+// no parentheses needed).
+console.log(Math.PI); // 3.141592653589793
+console.log(Math.E); // 2.718281828459045 (Euler's number)
+
+// 35. Math.round()
+// Rounds to the NEAREST whole number — .5 and above goes up,
+// below .5 goes down.
+console.log(Math.round(4.49)); // 4
+console.log(Math.round(4.6)); // 5
+
+// 36. Math.ceil()
+// Always rounds UP to the next whole number ("ceiling"),
+// no matter how small the decimal part is.
+console.log(Math.ceil(1.1)); // 2
+console.log(Math.ceil(1.9)); // 2
+
+// 37. Math.floor()
+// Always rounds DOWN to the previous whole number ("floor"),
+// no matter how large the decimal part is.
+console.log(Math.floor(1.9)); // 1
+
+// 38. Math.sqrt()
+// Returns the square root of a number.
+console.log(Math.sqrt(81)); // 9
+
+// 39. Math.abs()
+// Returns the ABSOLUTE value — the distance from zero,
+// so negatives become positive.
+console.log(Math.abs(-1.5)); // 1.5
+
+// 40. Math.pow()
+// Raises a base to a power: Math.pow(base, exponent).
+// The modern ** operator does the same thing (2 ** 3).
+console.log(Math.pow(2, 3)); // 8
+
+// 41. Math.min() / Math.max()
+// Return the smallest / largest of the numbers passed in.
+// (For an ARRAY of numbers, spread it first: Math.min(...arr).)
+console.log(Math.min(8, 6, 9, -7, 0)); // -7
+console.log(Math.max(8, 6, 9, -7, 0)); // 9
+
+// 42. Math.random()
+// Returns a random decimal from 0 (inclusive) up to 1 (exclusive).
+console.log(Math.random()); // e.g. 0.7231589...
+
+// 43. Random whole number in a range
+// The classic combo: scale Math.random() up, then Math.floor() it.
+// Formula for 1 to N inclusive: Math.floor(Math.random() * N + 1)
+let randomDice = Math.floor(Math.random() * 6 + 1);
+console.log(randomDice); // random whole number from 1 to 6
+let randomPercent = Math.floor(Math.random() * 100 + 1);
+console.log(randomPercent); // random whole number from 1 to 100
+
+
+/* ------------------ DATE OBJECT (BUILT-IN) ------------------ */
+
+// Unlike Math, Date IS created with the "new" keyword — each
+// Date object represents one specific moment in time.
+
+// 44. Creating dates
+// new Date() with no arguments = the current date and time.
+// Passing a date string creates that specific moment instead.
+let today = new Date();
+console.log(today); // current date & time (type: object)
+console.log(typeof today); // "object"
+
+let birthday = new Date("01-13-2026 08:12:45");
+console.log(birthday); // Tue Jan 13 2026 08:12:45
+
+// 45. toString()
+// Converts a Date object into a human-readable string.
+console.log(today.toString()); // e.g. "Mon Jul 13 2026 ..." (type: string)
+console.log(typeof today.toString()); // "string"
+
+// 46. Getting date parts (getters)
+// Each part of a date has its own getter method. Watch the quirks:
+// getMonth() is ZERO-BASED (0 = January, 11 = December), and
+// getDay() is the WEEKDAY (0 = Sunday), not the day of the month.
+console.log(today.getFullYear()); // e.g. 2026
+console.log(today.getMonth()); // 0-11 (0 = January!)
+console.log(today.getDate()); // 1-31 (day of the MONTH)
+console.log(today.getDay()); // 0-6 (day of the WEEK, 0 = Sunday)
+
+// 47. Getting time parts (getters)
+console.log(today.getHours()); // 0-23
+console.log(today.getMinutes()); // 0-59
+console.log(today.getSeconds()); // 0-59
+
+// 48. getTime() — the timestamp
+// Returns the number of MILLISECONDS since Jan 1, 1970 (the "Unix
+// epoch"). Useful for comparing dates or measuring elapsed time.
+console.log(today.getTime()); // e.g. 1783922400000
+
+// 49. Setting date parts (setters)
+// Every getter has a matching setter that MODIFIES the date object.
+// Remember: setMonth() is zero-based too (2 = March).
+birthday.setMonth(2); // month becomes March
+birthday.setDate(24); // day of month becomes 24
+console.log(birthday); // Tue Mar 24 2026 08:12:45
