@@ -1,18 +1,91 @@
-# JavaScript Loops — `for`, `while`, `for...in`, `for...of`
+# JavaScript Loops — `while`, `for`, `for...in`, `for...of`, `forEach`
 
-A clean reference covering the four core loop structures in JavaScript,
+A clean reference covering the core loop structures in JavaScript,
+how they behave with **strings, arrays, objects, Maps, and Sets**,
 when to use each one, and why `for...of` fails on plain objects.
+
+**Sample data used throughout (matches `loops.js`):**
+
+```javascript
+let message = "I am learning Javascript";
+let food = ["Cake", "Biscuit", "Lemon", "Apple"];
+let person = {
+  name: "Arman",
+  age: 28,
+  profession: "Web Developer",
+};
+let scores = new Map([
+  ["math", 90],
+  ["english", 85],
+  ["physics", 95],
+]);
+let colors = new Set(["red", "green", "blue", "red"]); // duplicate "red" is ignored
+```
 
 ---
 
-## 1. Basic `for` Loop
+## 1. `while` Loop
+
+Use `while` when you don't know in advance how many times you'll loop —
+only that it should keep going as long as a condition stays `true`.
+The condition is checked **before** every pass.
+
+```javascript
+let x = 1;
+while (x <= 10) {
+  console.log("Hi", x); // "Hi 1" ... "Hi 10"
+  x++;
+}
+```
+
+**Structure:**
+```javascript
+while (condition) {
+  // code to repeat
+  // something inside MUST eventually make the condition false,
+  // or the loop runs forever
+}
+```
+
+**`while` over a string (manual index):**
+```javascript
+let i = 0;
+while (i < message.length) {
+  console.log(`index ${i} = ${message[i]}`);
+  i++;
+}
+```
+
+**`while` over an array (manual index):**
+```javascript
+let j = 0;
+while (j < food.length) {
+  console.log(food[j]); // "Cake", "Biscuit", "Lemon", "Apple"
+  j++;
+}
+```
+
+**`do...while`** — a close cousin that always runs the code block **at
+least once**, since the condition is checked *after* the first pass:
+
+```javascript
+let y = 1;
+do {
+  console.log("Hello", y); // runs once even before checking
+  y++;
+} while (y <= 5);
+```
+
+---
+
+## 2. Basic `for` Loop
 
 The classic loop — use it when you know exactly how many times you want
 to repeat something, or need direct control over the counter.
 
 ```javascript
-for (let i = 0; i < 5; i++) {
-  console.log(i); // 0, 1, 2, 3, 4
+for (let i = 0; i <= 10; i++) {
+  console.log(i); // 0, 1, 2, ..., 10
 }
 ```
 
@@ -27,47 +100,28 @@ for (initialization; condition; increment) {
 - **Condition** — checked before every pass; loop continues while it's `true`.
 - **Increment** — runs after every pass (`i++`).
 
+**Looping over a string with a basic `for` loop:**
+```javascript
+for (let i = 0; i < message.length; i++) {
+  console.log(`index (${i}) = ${message[i]}`);
+}
+```
+
 **Looping over an array with a basic `for` loop:**
 ```javascript
-let fruits = ["Apple", "Banana", "Mango"];
-for (let i = 0; i < fruits.length; i++) {
-  console.log(fruits[i]); // "Apple", "Banana", "Mango"
+for (let i = 0; i < food.length; i++) {
+  console.log(food[i]); // "Cake", "Biscuit", "Lemon", "Apple"
 }
 ```
 
----
-
-## 2. `while` Loop
-
-Use `while` when you don't know in advance how many times you'll loop —
-only that it should keep going as long as a condition stays `true`.
+**Map/Set have no numeric index** — a basic `for` can't reach into them
+directly. Spread them into an array first:
 
 ```javascript
-let count = 0;
-while (count < 5) {
-  console.log(count); // 0, 1, 2, 3, 4
-  count++;
+let colorArr = [...colors];
+for (let i = 0; i < colorArr.length; i++) {
+  console.log(colorArr[i]); // "red", "green", "blue"
 }
-```
-
-**Structure:**
-```javascript
-while (condition) {
-  // code to repeat
-  // something inside MUST eventually make the condition false,
-  // or the loop runs forever
-}
-```
-
-**`do...while`** — a close cousin that always runs the code block **at
-least once**, since the condition is checked *after* the first pass:
-
-```javascript
-let attempts = 0;
-do {
-  console.log("Attempt " + attempts); // "Attempt 0" -> runs once even before checking
-  attempts++;
-} while (attempts < 3);
 ```
 
 ---
@@ -78,12 +132,6 @@ Designed for **objects** — walks through the object's enumerable
 property names (keys), one at a time.
 
 ```javascript
-let person = {
-  name: "Arman",
-  age: 28,
-  profession: "Web Developer",
-};
-
 for (let key in person) {
   console.log(key); // "name", "age", "profession"
 }
@@ -97,14 +145,30 @@ for (let key in person) {
 // "profession: Web Developer"
 ```
 
-`for...in` **can** technically be used on arrays too, but it's discouraged
-there — it loops over *indexes as strings* and can also pick up inherited
-enumerable properties, which `for...of` avoids entirely.
+`for...in` **can** technically be used on strings and arrays too, but it's
+discouraged there — it loops over *indexes as strings* and can also pick up
+inherited enumerable properties, which `for...of` avoids entirely.
 
 ```javascript
-let colors = ["Red", "Green", "Blue"];
-for (let index in colors) {
-  console.log(index); // "0", "1", "2" -> strings, not numbers
+// string -> x is the index ("0", "1", "2", ...)
+for (let x in message) {
+  console.log(`index ${x}, item = ${message[x]}`);
+}
+
+// array -> x is the index as a STRING, not a number
+for (let x in food) {
+  console.log(`index ${x}, item = ${food[x]}`);
+  console.log(typeof x); // "string"
+}
+```
+
+**`for...in` does NOT work with Map/Set** — their entries are stored
+internally, not as enumerable properties, so the loop body simply never
+runs (no error, just silence):
+
+```javascript
+for (let x in scores) {
+  console.log(x); // prints nothing
 }
 ```
 
@@ -112,30 +176,47 @@ for (let index in colors) {
 
 ## 4. `for...of` Loop — loops over VALUES
 
-Designed for **iterables** — arrays, strings, Maps, and Sets — walks
+Designed for **iterables** — strings, arrays, Maps, and Sets — walks
 through the actual **values** directly, in order.
 
+**With a string (value = each character):**
 ```javascript
-let colors = ["Red", "Green", "Blue"];
-for (let color of colors) {
-  console.log(color); // "Red", "Green", "Blue"
+for (let x of message) {
+  console.log(x); // "I", " ", "a", "m", ...
 }
+```
 
-let word = "Hi!";
-for (let letter of word) {
-  console.log(letter); // "H", "i", "!"
+**With an array (value = each item):**
+```javascript
+for (let x of food) {
+  console.log(x); // "Cake", "Biscuit", "Lemon", "Apple"
+}
+```
+
+**With a Map (value = a `[key, value]` pair — destructure it):**
+```javascript
+for (let [key, value] of scores) {
+  console.log(`${key} => ${value}`);
+}
+// "math => 90"
+// "english => 85"
+// "physics => 95"
+
+// or walk just one side of the Map:
+for (let key of scores.keys()) console.log(key);     // "math", "english", "physics"
+for (let value of scores.values()) console.log(value); // 90, 85, 95
+```
+
+**With a Set (value = each unique item):**
+```javascript
+for (let x of colors) {
+  console.log(x); // "red", "green", "blue" -> duplicate "red" appears only once
 }
 ```
 
 ### Why `for...of` fails on plain objects
 
 ```javascript
-let person = {
-  name: "Arman",
-  age: 28,
-  profession: "Web Developer",
-};
-
 for (let x of person) {
   console.log(x);
 }
@@ -149,7 +230,9 @@ comes first, which comes next, and when to stop.
 
 ```javascript
 console.log(typeof person[Symbol.iterator]); // "undefined" -> plain objects don't have this
-console.log(typeof colors[Symbol.iterator]);  // "function"  -> arrays DO have this
+console.log(typeof food[Symbol.iterator]);   // "function"  -> arrays DO have this
+console.log(typeof scores[Symbol.iterator]); // "function"  -> Maps DO have this
+console.log(typeof colors[Symbol.iterator]); // "function"  -> Sets DO have this
 ```
 
 Plain objects represent a **collection of key-value pairs**, not an
@@ -184,26 +267,72 @@ for (let [key, value] of Object.entries(person)) {
 
 ---
 
-## 5. Quick Comparison Table
+## 5. `forEach` — the built-in loop *method*
 
-| Loop | Best for | What you get | Works on plain objects? |
-|---|---|---|---|
-| `for` | Known number of repetitions, counter control | index / count | Yes (with manual indexing) |
-| `while` | Unknown repetitions, condition-based | — | Yes (with manual indexing) |
-| `for...in` | Objects | keys (property names) | **Yes** |
-| `for...of` | Iterables (arrays, strings, Maps, Sets) | values | **No** — needs `Object.keys()/values()/entries()` first |
+Not a loop statement — a **method** available on arrays, Maps, and Sets.
+You hand it a callback function, and it calls that function once per
+element. Note: you **cannot** `break` out of a `forEach` — use `for...of`
+if you need early exit.
+
+**With an array — callback receives `(item, index)`:**
+```javascript
+food.forEach((item, index) => console.log(index, item));
+// 0 "Cake"
+// 1 "Biscuit"
+// 2 "Lemon"
+// 3 "Apple"
+```
+
+**With a Map — callback receives `(value, key)` (value comes FIRST!):**
+```javascript
+scores.forEach((value, key) => console.log(key, "=>", value));
+// "math => 90"
+// "english => 85"
+// "physics => 95"
+```
+
+**With a Set — callback receives just the value:**
+```javascript
+colors.forEach((value) => console.log(value));
+// "red", "green", "blue"
+```
+
+Plain objects don't have `.forEach()` — convert first, same as with
+`for...of`:
+
+```javascript
+Object.entries(person).forEach(([key, value]) => {
+  console.log(key + ": " + value);
+});
+```
 
 ---
 
-## 6. The Core Takeaway
+## 6. Quick Comparison Table
 
-- **`for` / `while`** — general-purpose loops, controlled by a condition
-  you write yourself.
+| Loop | Best for | What you get | String | Array | Object | Map / Set |
+|---|---|---|---|---|---|---|
+| `while` / `do...while` | Unknown repetitions, condition-based | — | manual index | manual index | manual index | via `[...spread]` |
+| `for` | Known repetitions, counter control | index / count | ✅ | ✅ | manual keys | via `[...spread]` |
+| `for...in` | Objects | keys (as strings) | ✅ index | ⚠️ discouraged | ✅ | ❌ silently prints nothing |
+| `for...of` | Iterables | values | ✅ | ✅ | ❌ needs `Object.entries()` | ✅ |
+| `forEach` | Side-effects per element | value (+ index/key) | ❌ (no method) | ✅ | ❌ needs `Object.entries()` | ✅ |
+
+---
+
+## 7. The Core Takeaway
+
+- **`while` / `do...while`** — general-purpose loops, controlled by a
+  condition you write yourself; `do...while` always runs at least once.
+- **`for`** — counter-controlled repetition; index into strings/arrays,
+  spread Maps/Sets into an array first.
 - **`for...in`** — walks an object's **keys**; the natural fit for plain
-  objects.
+  objects. Silently does nothing on Maps/Sets.
 - **`for...of`** — walks an iterable's **values**; requires
-  `Symbol.iterator`, which plain objects don't have, but arrays, strings,
-  Maps, and Sets do.
-- To loop an object's data **with `for...of`**, convert it first using
-  `Object.keys()`, `Object.values()`, or `Object.entries()` — all three
-  return arrays, which are iterable.
+  `Symbol.iterator`, which plain objects don't have, but strings, arrays,
+  Maps, and Sets do. Maps yield `[key, value]` pairs you can destructure.
+- **`forEach`** — callback-style method on arrays, Maps, and Sets; no
+  `break` possible. Watch the Map argument order: `(value, key)`.
+- To loop an object's data **with `for...of` or `forEach`**, convert it
+  first using `Object.keys()`, `Object.values()`, or `Object.entries()` —
+  all three return arrays, which are iterable.
