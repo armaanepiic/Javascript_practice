@@ -1,16 +1,38 @@
+// for in (string, array, object)
+// for of (string, array)
+let message = "I am learning Javascript";
+let food = ["Cake", "Biscuit", "Lemon", "Apple"];
+let person = {
+  name: "Arman",
+  age: 28,
+  profession: "Web Developer",
+};
 
+// for(let x in message) {
+//     console.log(`index ${x}, item = ${message[x]}`)
+// }
 
+// for(let x of message) {
+//     console.log(x);
+// }
 
+// for (let x in food) {
+//   console.log(`index ${x}, item = ${food[x]}`);
+// }
 
+// for(let x of food) {
+//     console.log(x);
+// }
 
+// for(let x in person) {
+//     console.log(`${x}: ${person[x]}`)
+// }
 
+for (let [key, value] of Object.entries(person)) {
+  console.log(key + ": " + value);
+}
 
-
-
-
-
-
-
+// console.log(typeof person[Symbol.iterator]);
 
 
 /*
